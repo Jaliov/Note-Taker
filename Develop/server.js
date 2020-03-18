@@ -1,19 +1,9 @@
-// ==============================================================================
-// DEPENDENCIES
-// Series of npm packages that we will use to give our server useful functionality
-// ==============================================================================
 
 var express = require("express");
-
-// ==============================================================================
-// EXPRESS CONFIGURATION
-// This sets up the basic properties for our express server
-// ==============================================================================
-//
-// Tells node that we are creating an "express" server
+const path = require("path")
 var app = express();
 
-// Sets an initial port. We"ll use this later in our listener
+
 var PORT = process.env.PORT || 5000; //5000 (process.env looks at environment variables)
 
 // Sets up the Express app to handle data parsing
@@ -25,6 +15,7 @@ app.use(express.json());  //These r middleware functions
 // The below points our server to a series of "route" files.
 // These routes give our server a "map" of how to respond when users visit or request data from various URLs.
 // ================================================================================
+app.use(express.static(path.join(__dirname, "public")));
 
 require("./routes/apiRoutes")(app);
 require("./routes/htmlRoutes")(app);
