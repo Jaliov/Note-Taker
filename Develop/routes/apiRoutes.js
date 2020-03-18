@@ -33,7 +33,7 @@ module.exports = function(app) {
 
 app.delete('/api/notes/:id', function(req, res) { 
   console.log(req.params.id)
-  var newNoteCntnt = noteCntnt.forEach(note => 
+  var newNoteCntnt = noteCntnt.filter(note => 
      note.id != req.params.id
    ) 
   console.log(newNoteCntnt)
